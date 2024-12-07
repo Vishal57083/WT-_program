@@ -3,37 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - My College</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Student Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>ERODE SENGUNTHAR ENGINEERING COLLEGE</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
-            <a href="courses.html">Courses</a>
-            <a href="faculty.html">Faculty</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
+    <h1>Search Student Details</h1>
+    <input type="text" id="searchInput" placeholder="Enter student name..." onkeyup="searchStudents()">
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Major</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="studentBody">
+            <!-- Student details will be populated here -->
+        </tbody>
+    </table>
 
-    <section>
-        <h2>Welcome to ERODE SENGUNTHAR ENGINEERING COLLEGE</h2>
-        <p>We are dedicated to providing quality education and fostering a community of learning.</p>
-        <ul>
-            <li>
-            <li> AICTE Approval</li>
-            <li> AICTE Mandatory Disclosure</li>
-            <li> Anna University Affiliation Orders</li>
-            
-            <li>Career@ESEC</li>
-            <li>Audit Statement 2019-20, 2020-21, 2021-22, 2022-23</li>
-        </ul>
-    </section>
+    <script>
+        const students = [
+            { id: 1, name: "John Doe", age: 20, major: "Computer Science", email: "john.doe@example.com" },
+            { id: 2, name: "Jane Smith", age: 22, major: "Information Technology", email: "jane.smith@example.com" },
+            { id: 3, name: "Emily Johnson", age: 21, major: "Software Engineering", email: "emily.johnson@example.com" },
+            { id: 4, name: "Michael Brown", age: 23, major: "Data Science", email: "michael.brown@example.com" }
+        ];
 
-    <footer>
-        <p>&copy; 2024 Erode Senguthar Engineering College. All rights reserved.</p>
-    </footer>
+        function displayStudents(studentList) {
+            const studentBody = document.getElementById('studentBody');
+            studentBody.innerHTML = ''; // Clear previous results
+            studentList.forEach(student => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${student.id}</td>
+                    <td>${student.name}</td>
+                    <td>${student.age}</td>
+                    <td>${student.major}</td>
+                    <td>${student.email}</td>
+                `;
+                studentBody.appendChild(row);
+            });
+        }
+
+        function searchStudents() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const filteredStudents = students.filter(student => student.name.toLowerCase().includes(input));
+            displayStudents(filteredStudents);
+        }
+
+        // Initial display of all students
+        displayStudents(students);
+    </script>
 </body>
 </html>

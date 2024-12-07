@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Credit Card Details</h1>
+        <nav>
+            <a href="registration.html">Registration</a>
+            <a href="feedback.html">Feedback</a>
+            <a href="creditcard.html">Credit Card Details</a>
+        </nav>
+    </header>
+
+    <section>
+        <form action="#" method="post">
+            <label for="ccName">Name on Card:</label>
+            <input type="text" id="ccName" name="ccName" required>
+            
+            <label for="ccNumber">Card Number:</label>
+            <input type="text" id="ccNumber" name="ccNumber" required pattern="\d{16}" title="Please enter a valid 16-digit card number.">
+            
+            <label for="ccExpiry">Expiry Date:</label>
+            <input type="month" id="ccExpiry" name="ccExpiry" required>
+            
+            <label for="ccCVC">CVC:</label>
+            <input type="text" id="ccCVC" name="ccCVC" required pattern="\d{3}" title="Please enter a valid 3-digit CVC.">
+            
+            <input type="submit" value="Submit Payment">
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 All rights reserved.</p>
+    </footer>
+</body>
+</html>
